@@ -1,0 +1,50 @@
+clear all;
+
+% define strings for the base folders
+bString = './results_';
+count = 6:10;
+
+
+A = [];
+for i = count
+    
+baseString = strcat(bString,str(i),'/');
+    
+predFolder = strcat(baseString,'predictions/');
+estFolder = strcat(baseString,'estimations/');
+runtFolder = strcat(baseString,'runtimes/');
+
+
+
+
+files = dir(strcat(predFolder,'*.txt'));
+for file = files'
+    
+    B = [];
+    
+    % load predictions, max. likelihood estimations and runtimes
+    p = load(strcat(predFolder,file.name));
+    e = load(strcat(estFolder,strrep(file.name,'pred','est')));
+    r = load(strcat(runtFolder,strrep(file.name,'pred','runt')));
+    
+    specs = strrep(file.name,'_pred.txt','');
+    
+    
+    % calculate the metric based on the negative log likelihoods
+    sum = 0;
+    n = size(r,1);
+    for i = 1 : n
+        sum = sum + wbllike(p(i,:),r(i,:)) - wbllike(e(i,:),r(i,:));
+    end
+    sum = sum/n;
+    
+    disp(sprintf(strcat(specs,': %f'),sum));
+    
+    B = [B;sum];
+    
+    
+end
+
+A = [A,B]
+
+end

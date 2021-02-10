@@ -1,0 +1,1 @@
+In order to execute the "pipeline restart" strategy, the featureSAT12 program must also be compiled and placed in the "SAT-features-competition2012" directory. The source code for this program can be downloaded from http://www.cs.ubc.ca/labs/beta/Projects/SATzilla/.

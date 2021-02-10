@@ -1,0 +1,15 @@
+### Parameter file for the Weibull parameter prediction
+# name		            switch			            type	values			[conditions (using R syntax)]
+nestimators	            "--nestimators "	        i		(10,100)
+criterion	            "--criterion "	            c		(gini,entropy)
+maxfeatures             "--maxfeatures "            r       (0.0001,1)
+maxdepth                "--maxdepth "               i       (-1,100)
+minsamplessplit         "--minsamplessplit "        r       (0.0001,1)
+minsamplesleaf          "--minsamplesleaf "         r       (0.0001,0.5)
+minweightfractionleaf   "--minweightfractionleaf "  r       (0,0.5)
+maxleafnodes            "--maxleafnodes "			i       (-1,500)
+minimpuritydecrease     "--minimpuritydecrease "    r       (0,5)
+bootstrap               "--bootstrap "              c       (True,False)
+oobscore                "--oobscore "               c       (True,False)
+warmstart               "--warmstart "              c       (True,False)
+
